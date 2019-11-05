@@ -2,6 +2,7 @@ import { app, BrowserWindow } from 'electron' // eslint-disable-line
 // import shortcutAction from './actions/actionShortcut.js';
 
 import ipcAction from './ipc/index';
+import windowConfig from './config/windowConfig';
 
 /**
  * Set `__static` path to static files in production
@@ -20,13 +21,9 @@ function createWindow() {
   /**
    * Initial window options
    */
-  mainWindow = new BrowserWindow({
-    height: 563,
-    useContentSize: true,
-    width: 900,
-  });
-
+  mainWindow = new BrowserWindow(windowConfig);
   mainWindow.loadURL(winURL);
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -48,7 +45,6 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
 
 /**
  * Auto Updater

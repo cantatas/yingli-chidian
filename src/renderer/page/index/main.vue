@@ -31,9 +31,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { ipcRenderer } = require('electron');
+import { ipcRenderer } from 'electron';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'fanyi-page',
   data() {
@@ -45,6 +46,7 @@ export default {
         { name: '收藏', icon: 'iconcollection' },
       ],
       activeIndex: 0,
+      setTimer: null,
     };
   },
   components: {
@@ -57,7 +59,10 @@ export default {
   },
   methods: {
     indexQueryWords() {
-      ipcRenderer.send('indexQueryWords', this.formWord);
+      clearTimeout(this.setTimer);
+      this.setTimer = setTimeout(() => {
+        ipcRenderer.send('indexQueryWords', this.formWord);
+      }, 200);
     },
     action(index) {
       this.activeIndex = index;
