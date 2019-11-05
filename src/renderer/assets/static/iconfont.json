@@ -1,0 +1,37 @@
+{
+  "id": "1487575",
+  "name": "fanyi",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2205624",
+      "name": "业务翻译",
+      "font_class": "business-translate",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    },
+    {
+      "icon_id": "3050491",
+      "name": "收藏",
+      "font_class": "collection",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "3050500",
+      "name": "收藏",
+      "font_class": "collection-b",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "6834934",
+      "name": "文件-查找内容",
+      "font_class": "wj-cznr",
+      "unicode": "e792",
+      "unicode_decimal": 59282
+    }
+  ]
+}
