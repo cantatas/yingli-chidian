@@ -13,6 +13,7 @@
         height: 100%;
         background: #f2f2f2;
         flex: none;
+        box-shadow: inset -8px 0px 15px -11px #b3b3b3;
         ul.user{
             height: 100px;
         }
@@ -27,15 +28,20 @@
                 height: 50px;
                 text-align: center;
                 font-size: 16px;
-                color: #10176b;
+                color: #5f606d;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 &:hover{
                     color: darkred;
+                    .icon{
+                        transform: translate(-3px);
+                    }
                 }
                 .icon{
-                    margin-right: 10px;
+                    margin-right: 6px;
+                    transform: translate(0);
+                    transition: transform ease .3s;
                 }
                 &.on{
                     color: darkred;

@@ -3,16 +3,16 @@
     <main class="box">
       <div class="left-side">
         <ul class="menu">
-          <li class="name">logo</li>
+          <li class="name"></li>
         </ul>
         <ul class="menu">
           <li v-for="(item,index) in menuData" :key="index" @click="action(index)" :class="{'on' : activeIndex == index}">
             <i class="icon iconfont" :class="item.icon"></i> {{item.name}}
           </li>
         </ul>
-        <div class="datafrom">
+        <!-- <div class="datafrom">
           数据来自 <span>百度翻译</span>
-        </div>
+        </div> -->
       </div>
       <div class="right-side">
         <div class="tran-type">
@@ -24,7 +24,7 @@
           <textarea @focus="clearTransResutl" @keyup="indexQueryWords()" v-model="formWord" placeholder="请输入要查询的单词..." rows="3"></textarea>
         </div>
         <div v-show="formWord" class="row result">
-          <div class="row title">result</div>
+          <!-- <div class="row title">result</div> -->
           <div class="row inpput">{{formWord}}</div>
           <div class="row fy-res">
             <div class="res-text">{{ getTransResult.trans_result && getTransResult.trans_result[0].dst }}</div>
