@@ -52,3 +52,29 @@ article{
 .iconfont::before{
     font-size: 22px;
 }
+.title-tips{
+    position: relative;
+
+}
+.title-tips:hover::after{
+    display: inline-block;
+}
+.title-tips::before{
+    content: '';
+    position: relative;
+    width: 6px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.68);
+}
+.title-tips::after{
+    position: relative;
+    content: attr(title);
+    background: rgba(0, 0, 0, 0.68);
+    width: auto;
+    font-size: 12px;
+    padding: 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    color: #fff;
+    /* display: none; */
+}
