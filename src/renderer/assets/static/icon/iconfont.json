@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "866221",
+      "name": "复制_copy25",
+      "font_class": "fuzhicopy25",
+      "unicode": "e90a",
+      "unicode_decimal": 59658
+    },
+    {
+      "icon_id": "866505",
+      "name": "设置001",
+      "font_class": "shezhi001",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1218915",
+      "name": "复制_copy22",
+      "font_class": "fuzhicopy22",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
       "icon_id": "2205624",
       "name": "业务翻译",
       "font_class": "business-translate",

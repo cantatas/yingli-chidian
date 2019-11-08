@@ -1,5 +1,5 @@
-import { app, BrowserWindow } from 'electron' // eslint-disable-line
-// import shortcutAction from './actions/actionShortcut.js';
+import { app, BrowserWindow,globalShortcut } from 'electron' // eslint-disable-line
+import shortcutAction from './actions/actionShortcut.js';
 
 import ipcAction from './ipc/index';
 import windowConfig from './config/windowConfig';
@@ -29,7 +29,7 @@ function createWindow() {
   });
 
   ipcAction.init();// 渲染进程通信初始化
-  // shortcutAction.register(globalShortcut);
+  shortcutAction.register(globalShortcut, mainWindow);
 }
 
 app.on('ready', createWindow);
@@ -44,6 +44,11 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+app.on('will-qui', () => {
+  // 注销所有快捷键
+  globalShortcut.unregisterAll();
 });
 
 /**

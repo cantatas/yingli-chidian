@@ -63,7 +63,6 @@
     }
     .right-side{
         margin: 10px;
-        height: 100%;
         width: 100%;
         .form{
             display: flex;
@@ -100,6 +99,36 @@
     .fy-res{
         display: flex;
         align-items: center;
+
+        .res-collection{
+            > a{
+                margin-right: 5px;
+                .icon::before{
+                    font-size: 20px;
+                    color: #333;
+                }
+                &:hover{
+                    .icon::before{
+                        color: #666;
+                    }
+                }
+            }
+            a.copy{
+                cursor: pointer;
+                &:hover{
+                    .icon.iconfuzhicopy22::before{
+                        content: "\e90a";
+                    }
+                }
+            }
+            a.coll{
+                &:hover{
+                    .icon.iconcollection::before{
+                        content: "\e60d";
+                    }
+                }
+            }
+        }
         .icon.iconcollection{
             cursor: pointer;
             display: inline-block;

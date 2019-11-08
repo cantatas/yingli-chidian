@@ -27,9 +27,12 @@
           <!-- <div class="row title">result</div> -->
           <div class="row inpput">{{formWord}}</div>
           <div class="row fy-res">
-            <div class="res-text">{{ getTransResult.trans_result && getTransResult.trans_result[0].dst }}</div>
-            <div class="res-collection" v-show="getTransResult.trans_result && getTransResult.trans_result[0].dst">
-              <a title="加入我的收藏" @click="saveCollection"><i class="icon iconfont iconcollection"></i></a>
+            <div class="res-text">{{ resultVal }}</div>
+          </div>
+          <div class="row fy-res">
+            <div class="res-collection" v-show="resultVal">
+              <a title="复制" @click="copyResult()" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
+              <a title="加入我的收藏" class="coll" @click="saveCollection"><i class="icon iconfont iconcollection"></i></a>
             </div>
           </div>
         </div>
@@ -40,7 +43,7 @@
 
 <script>
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, clipboard } from 'electron';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -49,7 +52,7 @@ export default {
     return {
       formWord: '',
       menuData: [
-        { name: '搜索', icon: 'iconwj-cznr' },
+        // { name: '搜索', icon: 'iconwj-cznr' },
         { name: '翻译', icon: 'iconbusiness-translate' },
         { name: '收藏', icon: 'iconcollection' },
       ],
@@ -64,6 +67,9 @@ export default {
   },
   computed: {
     ...mapGetters(['getTransResult']),
+    resultVal() {
+      return (this.getTransResult.trans_result && this.getTransResult.trans_result[0].dst) || '';
+    },
   },
   methods: {
     indexQueryWords() {
@@ -87,6 +93,9 @@ export default {
     },
     saveCollection() {
 
+    },
+    copyResult() { // 复制
+      clipboard.writeText(this.resultVal);
     },
   },
 };

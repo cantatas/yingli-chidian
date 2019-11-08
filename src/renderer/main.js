@@ -1,6 +1,6 @@
 
 import '@/assets/css/global.css';
-import '@/assets/static/iconfont.css';
+import '@/assets/static/icon/iconfont.css';
 import '@/assets/sass/base.scss';
 
 import Vue from 'vue';

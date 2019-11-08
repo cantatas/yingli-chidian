@@ -1,16 +1,24 @@
 
 export default {
-  register() {
-    // // 注册一个 'CommandOrControl+X' 的全局快捷键
-    // const ret = globalShortcut.register('CommandOrControl+X', () => {
-    //   console.log('CommandOrControl+X is pressed');
-    // });
+  register(globalShortcut, win) {
+    // 快捷键打开
+    const ret = globalShortcut.register('command+option+X', () => {
+      if (win.isFocused()) { // 判断窗口是否聚焦
+        win.blur();
+      } else {
+        win.focus();
+      }
+    });
 
-    // if (!ret) {
-    //   console.log('registration failed');
-    // }
+    // eslint-disable-next-line no-empty
+    if (!ret) {
 
-    // // 检查快捷键是否注册成功
-    // console.log(globalShortcut.isRegistered('CommandOrControl+X'));
+    }
+
+    // 检查快捷键是否注册成功
+    // eslint-disable-next-line no-empty
+    if (globalShortcut.isRegistered('command+option+X')) {
+
+    }
   },
 };
