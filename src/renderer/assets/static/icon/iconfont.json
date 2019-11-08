@@ -27,6 +27,13 @@
       "unicode_decimal": 58945
     },
     {
+      "icon_id": "1368560",
+      "name": "历史",
+      "font_class": "history",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
       "icon_id": "2205624",
       "name": "业务翻译",
       "font_class": "business-translate",

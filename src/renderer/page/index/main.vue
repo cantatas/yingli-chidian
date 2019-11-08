@@ -55,6 +55,7 @@ export default {
         // { name: '搜索', icon: 'iconwj-cznr' },
         { name: '翻译', icon: 'iconbusiness-translate' },
         { name: '收藏', icon: 'iconcollection' },
+        { name: '历史', icon: 'iconhistory' },
       ],
       activeIndex: 0,
       setTimer: null,

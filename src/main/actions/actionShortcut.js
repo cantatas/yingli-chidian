@@ -3,9 +3,7 @@ export default {
   register(globalShortcut, win) {
     // 快捷键打开
     const ret = globalShortcut.register('command+option+X', () => {
-      if (win.isFocused()) { // 判断窗口是否聚焦
-        win.blur();
-      } else {
+      if (!win.isFocused()) { // 判断窗口是否聚焦
         win.focus();
       }
     });
