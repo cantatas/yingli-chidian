@@ -45,7 +45,7 @@
           <ul class="record-list">
             <li :key="index" v-for="(key,index) in getMyCollectionState">
               <div class="body">
-                <div class="num">{{index+1}}</div>
+                <div class="num">{{index+1}}.</div>
                 <div class="content">
                   <div class="query">{{key.q}}<a title="复制" @click="copyResult(key.q)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a></div>
                   <div class="result">{{key.r}}<a title="复制" @click="copyResult(key.r)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a></div>
