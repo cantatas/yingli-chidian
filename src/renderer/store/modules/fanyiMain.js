@@ -14,17 +14,27 @@ const mutations = {
     state.transResult = param;
   },
   SET_MY_COLLECTION(state, param) {
+    if (param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
     state.myCollection = param;
   },
   SET_SEARCH_HISTORYS(state, param) {
+    if (param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
     state.serarchHistorys = param;
   },
 };
 
 const actions = {
 
-  queryWord({ commit }, params) {
-    commit('SET_TRANS_RESULT', JSON.parse(params));
+  queryWord({ commit, dispatch }, params) {
+    const val = JSON.parse(params);
+    commit('SET_TRANS_RESULT', val);
+    // 保存历史搜索
+    if (val.trans_result) {
+      dispatch('saveSearchHistory', {
+        query: val.trans_result[0].src,
+        result: val.trans_result[0].dst,
+      });
+    }
   },
   clearTransResutl({ commit }) {
     commit('SET_TRANS_RESULT', '');
@@ -48,11 +58,17 @@ const actions = {
   getSearchHistory({ commit }) {
     commit('SET_SEARCH_HISTORYS', JSON.parse(getItem(keys.index.SEARCH_HISTORYS)));
   },
-  deleteColleItemByTime({ commit }, time) { // 根据时间戳删除收藏项
+  deleteColleItemByTime({ dispatch }, time) { // 根据时间戳删除 收藏项
     const list = JSON.parse(getItem(keys.index.MY_COLLECTION));
     list.splice(list.findIndex(item => item.t === time), 1);
     setItem(keys.index.MY_COLLECTION, list);
-    commit('SET_MY_COLLECTION', JSON.parse(getItem(keys.index.MY_COLLECTION)));
+    dispatch('getMyCollection');
+  },
+  deleteHistroyItemByTime({ dispatch }, time) { // 根据时间戳删除 历史项
+    const list = JSON.parse(getItem(keys.index.SEARCH_HISTORYS));
+    list.splice(list.findIndex(item => item.t === time), 1);
+    setItem(keys.index.SEARCH_HISTORYS, list);
+    dispatch('getSearchHistory');
   },
 };
 

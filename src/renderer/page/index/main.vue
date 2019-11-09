@@ -28,7 +28,7 @@
           </div>
           <div v-show="queryWord" class="row result">
             <div v-show="resultVal" class="row fy-res copy-row">
-              <div class="input">{{queryWord}}</div><a title="复制" @click="copySearch()" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
+              <div class="input">{{queryWord}}</div><a title="复制" @click="copyResult(queryWord)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
             </div>
             <div class="row fy-res">
               <div class="res-text">{{ resultVal }}</div>
@@ -62,7 +62,24 @@
           </ul>
         </div>
         <div v-show="activeIndex == 2" class="tab tab-history">
-history
+          <ul class="record-list">
+            <li :key="index" v-for="(key,index) in getSearchHistoryState">
+              <div class="body">
+                <div class="num">{{index+1}}.</div>
+                <div class="content">
+                  <div class="query">{{key.q}}<a title="复制" @click="copyResult(key.q)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a></div>
+                  <div class="result">{{key.r}}<a title="复制" @click="copyResult(key.r)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a></div>
+                  <div class="time">{{getDayName(key.t)}} {{dateFormat(key.t)}}</div>
+                </div>
+              </div>
+              <div class="actions">
+                <a class="del-colle" @click="deleteHistroyItem(key.t)">
+                  <i class="icon iconfont iconshanchu"></i>
+                </a>
+              </div>
+            </li>
+            <li class="data-end"><i class="icon iconfont iconhuangguan"></i>没有更多了</li>
+          </ul>
         </div>
       </div>
     </main>
@@ -120,6 +137,7 @@ export default {
       }
     },
     keyDownAction(e) {
+      this.clearTransResutl();
       if (e.keyCode === 13) e.preventDefault();
     },
     action(index) {
@@ -149,6 +167,18 @@ export default {
         this.isCollecolled = true;
       });
     },
+    deleteColleItem(t) {
+      // eslint-disable-next-line no-restricted-globals
+      if (confirm('确认删除？')) {
+        this.$store.dispatch('deleteColleItemByTime', t);
+      }
+    },
+    deleteHistroyItem(t) {
+      // eslint-disable-next-line no-restricted-globals
+      if (confirm('确认删除？')) {
+        this.$store.dispatch('deleteHistroyItemByTime', t);
+      }
+    },
     getMyCollection() {
       this.$store.dispatch('getMyCollection');
     },
@@ -160,12 +190,7 @@ export default {
     },
     copyResult(value) { // 复制翻译结果
       clipboard.writeText(value || this.resultVal);
-    },
-    copySearch() { // 复制搜索
-      clipboard.writeText(this.queryWord);
-    },
-    deleteColleItem(t) {
-      this.$store.dispatch('deleteColleItemByTime', t);
+      alert('复制成功');
     },
   },
 };
