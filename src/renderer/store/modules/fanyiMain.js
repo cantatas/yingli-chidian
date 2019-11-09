@@ -48,6 +48,12 @@ const actions = {
   getSearchHistory({ commit }) {
     commit('SET_SEARCH_HISTORYS', JSON.parse(getItem(keys.index.SEARCH_HISTORYS)));
   },
+  deleteColleItemByTime({ commit }, time) { // 根据时间戳删除收藏项
+    const list = JSON.parse(getItem(keys.index.MY_COLLECTION));
+    list.splice(list.findIndex(item => item.t === time), 1);
+    setItem(keys.index.MY_COLLECTION, list);
+    commit('SET_MY_COLLECTION', JSON.parse(getItem(keys.index.MY_COLLECTION)));
+  },
 };
 
 const getters = {

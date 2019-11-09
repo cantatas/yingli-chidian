@@ -53,7 +53,7 @@
                 </div>
               </div>
               <div class="actions">
-                <a class="del-colle" @click="deleteColleItem()">
+                <a class="del-colle" @click="deleteColleItem(key.t)">
                   <i class="icon iconfont iconshanchu"></i>
                 </a>
               </div>
@@ -163,6 +163,9 @@ export default {
     },
     copySearch() { // 复制搜索
       clipboard.writeText(this.queryWord);
+    },
+    deleteColleItem(t) {
+      this.$store.dispatch('deleteColleItemByTime', t);
     },
   },
 };
