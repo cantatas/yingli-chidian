@@ -3,7 +3,9 @@
     <main class="box">
       <div class="left-side">
         <ul class="menu">
-          <li class="name"></li>
+          <li class="name">
+            <span class="hou">后</span><span class="dao">道</span><span class="ci">词</span><span class="dian">典</span>
+          </li>
         </ul>
         <ul class="menu">
           <li v-for="(item,index) in menuData" :key="index" @click="action(index)" :class="{'on' : activeIndex == index}">
@@ -22,10 +24,10 @@
             </ul>
           </div>
           <div class="row form">
-            <textarea @focus="clearTransResutl" @keyup="indexQueryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
+            <textarea @focus="clearTransResutl" @keydown="keyDownAction" @keyup.enter="indexQueryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
           </div>
           <div v-show="queryWord" class="row result">
-            <div class="row fy-res copy-row">
+            <div v-show="resultVal" class="row fy-res copy-row">
               <div class="input">{{queryWord}}</div><a title="复制" @click="copySearch()" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
             </div>
             <div class="row fy-res">
@@ -34,7 +36,7 @@
             <div class="row fy-res">
               <div class="res-collection" v-show="resultVal">
                 <a title="复制" @click="copyResult()" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
-                <a title="加入我的收藏" class="coll" @click="saveCollection"><i class="icon iconfont iconcollection"></i></a>
+                <a title="加入我的收藏" class="coll" @click="saveCollection"><i  :class="{'on' : isCollecolled}" class="icon iconfont iconcollection"></i></a>
               </div>
             </div>
           </div>
@@ -86,6 +88,7 @@ export default {
       ],
       activeIndex: 0,
       setTimer: null,
+      isCollecolled: false,
     };
   },
   components: {
@@ -111,10 +114,13 @@ export default {
       return timeTool.getDayName(time);
     },
     indexQueryWords() {
-      clearTimeout(this.setTimer);
-      this.setTimer = setTimeout(() => {
+      if (this.queryWord) {
         ipcRenderer.send('indexQueryWords', this.queryWord);
-      }, 200);
+        this.isCollecolled = false;
+      }
+    },
+    keyDownAction(e) {
+      if (e.keyCode === 13) e.preventDefault();
     },
     action(index) {
       this.activeIndex = index;
@@ -139,6 +145,8 @@ export default {
       this.$store.dispatch('saveMyCollection', {
         query: this.queryWord,
         result: this.resultVal,
+      }).then(() => {
+        this.isCollecolled = true;
       });
     },
     getMyCollection() {
