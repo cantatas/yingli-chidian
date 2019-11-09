@@ -60,6 +60,20 @@
       "font_class": "wj-cznr",
       "unicode": "e792",
       "unicode_decimal": 59282
+    },
+    {
+      "icon_id": "9079761",
+      "name": "皇冠",
+      "font_class": "huangguan",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "10809147",
+      "name": "垃圾桶  删除",
+      "font_class": "shanchu",
+      "unicode": "e705",
+      "unicode_decimal": 59141
     }
   ]
 }

@@ -1,5 +1,9 @@
 
 .page-index{
+    .flex{
+        display: flex;
+        justify-content: flex-start;
+    }
     .row{
         margin-top: 10px;
     }
@@ -64,6 +68,13 @@
     .right-side{
         margin: 10px;
         width: 100%;
+
+        .input{
+            color: #777;
+            margin-right: 5px;
+            font-size: 18px;
+            font-weight: bolder;
+        }
         .form{
             display: flex;
             textarea{
@@ -83,14 +94,17 @@
                 }
             }
         }
+        .tab-collection{
+            
+        }
+        .tab-history{
+            
+        }
     }
     .result{
         .title{
             font-size: 26px;
             font-weight: bolder;
-        }
-        .inpput{
-            color: #777;
         }
     }
     .res-text{
@@ -99,36 +113,6 @@
     .fy-res{
         display: flex;
         align-items: center;
-
-        .res-collection{
-            > a{
-                margin-right: 5px;
-                .icon::before{
-                    font-size: 16px;
-                    color: #333;
-                }
-                &:hover{
-                    .icon::before{
-                        color: #666;
-                    }
-                }
-            }
-            a.copy{
-                cursor: pointer;
-                &:hover{
-                    .icon.iconfuzhicopy22::before{
-                        content: "\e90a";
-                    }
-                }
-            }
-            a.coll{
-                &:hover{
-                    .icon.iconcollection::before{
-                        content: "\e60d";
-                    }
-                }
-            }
-        }
         .icon.iconcollection{
             cursor: pointer;
             display: inline-block;
@@ -137,6 +121,112 @@
             }
             .title-tips{
                 display: inline-block;
+            }
+        }
+    }
+    a.copy{
+        cursor: pointer;
+        margin:0 5px;
+        color: #555 !important;
+        font-weight: normal;
+        &:hover{
+            .icon.iconfuzhicopy22::before{
+                content: "\e90a";
+            }
+        }
+    }
+    .res-collection,.copy-row{
+        > a{
+            margin-right: 5px;
+            .icon::before{
+                font-size: 16px;
+                color: #333;
+            }
+            &:hover{
+                .icon::before{
+                    color: #666;
+                }
+            }
+        }
+        a.coll{
+            &:hover{
+                .icon.iconcollection::before{
+                    content: "\e60d";
+                }
+            }
+        }
+    }
+    .record-list{
+        li{
+            &:hover{
+                transform: translate(5px);
+            }
+            transform: translate(0);
+            transition: transform ease .3s;
+            @extend .flex;
+            border-bottom: .5px solid #eaeaea;
+            padding:10px 0;
+            justify-content: space-between;
+            &.data-end{
+                font-size: 12px;
+                color: #888;
+                justify-content: center;
+                border-bottom: none;
+                align-items: center;
+                .iconhuangguan{
+                    color: #e0bb77;
+                    margin-right: 5px;
+                    &::before{
+                        font-size: 18px;
+                    }
+                }
+                &:hover{
+                    transform: translate(0);
+                }
+            }
+            .body{
+                @extend .flex;
+                flex:9;
+            }
+            .num{
+                color: #555;
+            }
+            .content{
+                margin-left: 10px;
+                > div{
+                    margin-bottom: 5px;
+                }
+                .query{
+                    font-size: 16px;
+                    font-weight: bolder;
+                    color: #222;
+                }
+                .result{
+                    font-size: 14px;
+                    color: #666;
+                }
+                .time{
+                    font-size: 12px;
+                    color: #555;
+                }
+            }
+            .actions{
+                @extend .flex;
+                align-items: center;
+                justify-content: center;
+                flex:1;
+                .del-colle:hover{
+                    cursor: pointer;
+                    .iconshanchu{
+                        color: #d80000;
+                    }
+                }
+                .iconshanchu{
+                    color: #555;
+                    &::before{
+                        font-size: 18px;
+                    }
+                }
             }
         }
     }

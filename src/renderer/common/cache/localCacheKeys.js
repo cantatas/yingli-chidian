@@ -1,10 +1,9 @@
 
-
-const SPACE_NAME = 'index.';
-
+const SPACE_NAME = 'fanyi.index.';
 export default {
   index: {
-    USER_QUERY: `${SPACE_NAME}query.history.value`,
+    SEARCH_HISTORYS: `${SPACE_NAME}save.history.value`,
+    MY_COLLECTION: `${SPACE_NAME}save.my.collection.value`,
   },
 };
 
