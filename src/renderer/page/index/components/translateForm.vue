@@ -38,8 +38,6 @@ export default {
       isCollecolled: false,
     };
   },
-  components: {
-  },
   mounted() {
     this.onIPCMsg();
   },

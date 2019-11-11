@@ -1,22 +1,19 @@
 <template>
   <div class="page-index ">
     <main class="box">
-      <div class="left-side">
+      <div class="left-side"><!-- 左侧 -->
         <brand></brand>
         <menuComponents @getMenuActionIndex="getMenuActionIndex"></menuComponents>
-        <!-- <div class="datafrom">
-          数据来自 <span>百度翻译</span>
-        </div> -->
       </div>
-      <div class="right-side">
-        <div v-if="activeIndex == 0" class="tab tab-fanyi">
+      <div class="right-side"><!-- 右侧 -->
+        <div v-if="activeIndex == 0" class="tab tab-translateForm">
           <translateForm></translateForm>
         </div>
         <div v-if="activeIndex == 1" class="tab tab-collection">
-          <collectionComponents></collectionComponents>
+          <collection></collection>
         </div>
         <div v-if="activeIndex == 2" class="tab tab-history">
-          <historyComponents></historyComponents>
+          <history></history>
         </div>
       </div>
     </main>
@@ -26,23 +23,21 @@
 <script>
 import brand from '@/components/brand';
 import menuComponents from '@/components/menu';
-import historyComponents from './components/history';
-import collectionComponents from './components/collection';
+import history from './components/history';
+import collection from './components/collection';
 import translateForm from './components/translateForm';
 export default {
-  name: 'fanyi-page',
+  name: 'index-page',
   data() {
     return {
-      queryWord: '',
       activeIndex: 0,
-      setTimer: null,
     };
   },
   components: {
     brand,
     translateForm,
-    historyComponents,
-    collectionComponents,
+    history,
+    collection,
     menuComponents,
   },
   methods: {

@@ -23,6 +23,7 @@ export default {
       align-items: center;
       justify-content: center;
       border-radius: 3px;
+      font-weight: bold;
   }
   .hou{
       color: #3a3de2;

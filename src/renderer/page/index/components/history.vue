@@ -27,12 +27,6 @@ import { mapGetters } from 'vuex';
 import indexPage from '../js/index-page';
 export default {
   name: 'history-components',
-  data() {
-    return {
-    };
-  },
-  components: {
-  },
   mounted() {
     this.getSearchHistory();
   },
