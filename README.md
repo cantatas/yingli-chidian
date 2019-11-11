@@ -27,7 +27,7 @@ This project was generated with [electron-vue](https://github.com/SimulatedGREG/
 
 ### eslint配置
 
-``` json
+``` javascript
 {
     // 编辑粘贴自动格式化
     "editor.formatOnPaste": false,
