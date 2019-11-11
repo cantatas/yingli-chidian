@@ -6,7 +6,7 @@
         <menuComponents @getMenuActionIndex="getMenuActionIndex"></menuComponents>
       </div>
       <div class="right-side"><!-- 右侧 -->
-        <div v-if="activeIndex == 0" class="tab tab-translateForm">
+        <div v-show="activeIndex == 0" class="tab tab-translateForm">
           <translateForm></translateForm>
         </div>
         <div v-if="activeIndex == 1" class="tab tab-collection">
