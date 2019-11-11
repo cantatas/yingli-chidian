@@ -29,12 +29,14 @@
     a.copy{
         cursor: pointer;
         margin:0 5px;
-        color: #555 !important;
         font-weight: normal;
         &:hover{
             .icon.iconfuzhicopy22::before{
                 content: "\e90a";
             }
+        }
+        &:nth-child(1){
+            margin-left: 0;
         }
     }
 }

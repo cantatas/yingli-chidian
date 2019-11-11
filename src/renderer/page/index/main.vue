@@ -7,7 +7,7 @@
       </div>
       <div class="right-side"><!-- 右侧 -->
         <div v-show="activeIndex == 0" class="tab tab-translateForm">
-          <translateForm></translateForm>
+          <translateForm :activeIndex="activeIndex"></translateForm>
         </div>
         <div v-if="activeIndex == 1" class="tab tab-collection">
           <collection></collection>
