@@ -43,8 +43,12 @@ const actions = {
   saveMyCollection({}, params) {
     const t = new Date().getTime();
     const val = JSON.parse(getItem(keys.index.MY_COLLECTION)) || [];
-    val.push({ t, q: params.query, r: params.result });
-    setItem(keys.index.MY_COLLECTION, val);
+    if (val.findIndex(item => item.q === params.query) < 0) {
+      val.push({ t, q: params.query, r: params.result });
+      setItem(keys.index.MY_COLLECTION, val);
+    } else {
+      alert('该词条已收藏');
+    }
   },
   // eslint-disable-next-line no-empty-pattern
   saveSearchHistory({}, params) {

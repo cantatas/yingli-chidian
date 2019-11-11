@@ -1,0 +1,58 @@
+
+@import "@/assets/sass/base.scss";
+.translateForm-components{
+    .input{
+        color: #777;
+        margin-right: 5px;
+        font-size: 18px;
+        font-weight: bolder;
+    }
+    .form{
+        display: flex;
+        textarea{
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            border: 0;
+            padding: 8px;
+            border-radius: 5px;
+            background: #f7f8fa;
+            width: 100%;
+            outline: none;
+            font-size: 22px;
+            resize: none;
+            &::placeholder{
+                color: #aaa;
+            }
+        }
+    }
+    .result{
+        .title{
+            font-size: 26px;
+            font-weight: bolder;
+        }
+    }
+    .res-text{
+        margin-right:10px ;
+    }
+    .fy-res{
+        display: flex;
+        align-items: center;
+        .icon.iconcollection{
+            cursor: pointer;
+            display: inline-block;
+            &::before{
+                font-size: 18px;
+            }
+            .title-tips{
+                display: inline-block;
+            }
+            &.on{
+                &::before{
+                    content: "\e60d";
+                    color: orange;
+                }
+            }
+        }
+    }
+}

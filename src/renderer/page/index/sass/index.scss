@@ -1,9 +1,5 @@
 
 .page-index{
-    .flex{
-        display: flex;
-        justify-content: flex-start;
-    }
     .row{
         margin-top: 10px;
     }
@@ -22,70 +18,6 @@
         ul.user{
             height: 100px;
         }
-        ul.menu{
-            .name{
-                color: #000;
-                font-size: 26px;
-                margin: 20px 0;
-                font-weight: bolder;
-                letter-spacing: 3px;
-                span{
-                    padding: 3px;
-                    text-align: center;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 3px;
-                }
-                .hou{
-                    color: #3a3de2;
-                    background: rgba(58, 61, 226, 0.1);
-                    font-size: 28px;
-                    transform: rotate(-10deg);
-                }
-                .dao{
-                    transform: rotate(-20deg);
-                    color: #d8c00c;
-                    background: rgba(216, 192, 12, 0.1);
-                }
-                .ci{
-                    color: #b89ae8;
-                    background: rgba(184, 154, 232, 0.1);
-                }
-                .dian{
-                    color: #18b4e6;
-                    background: rgba(62, 206, 252, 0.1);
-                }
-                .dian,
-                .dao{
-                    font-size: 22px;
-                }
-            }
-            li{
-                height: 50px;
-                text-align: center;
-                font-size: 14px;
-                color: #5f606d;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                &:hover{
-                    color: darkred;
-                    .icon{
-                        transform: translate(-3px);
-                    }
-                }
-                .icon{
-                    margin-right: 6px;
-                    transform: translate(0);
-                    transition: transform ease .3s;
-                }
-                &.on{
-                    color: darkred;
-                    background: rgba(139, 0, 0, 0.1);
-                }
-            }
-        }
         .datafrom{
             position: absolute;
             bottom: 20px;
@@ -103,66 +35,7 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        .input{
-            color: #777;
-            margin-right: 5px;
-            font-size: 18px;
-            font-weight: bolder;
-        }
-        .form{
-            display: flex;
-            textarea{
-                flex: 1;
-                -webkit-appearance: none;
-                appearance: none;
-                border: 0;
-                padding: 8px;
-                border-radius: 5px;
-                background: #f7f8fa;
-                width: 100%;
-                outline: none;
-                font-size: 22px;
-                resize: none;
-                &::placeholder{
-                    color: #aaa;
-                }
-            }
-        }
-        .tab-collection{
-            
-        }
-        .tab-history{
-            
-        }
-    }
-    .result{
-        .title{
-            font-size: 26px;
-            font-weight: bolder;
-        }
-    }
-    .res-text{
-        margin-right:10px ;
-    }
-    .fy-res{
-        display: flex;
-        align-items: center;
-        .icon.iconcollection{
-            cursor: pointer;
-            display: inline-block;
-            &::before{
-                font-size: 18px;
-            }
-            .title-tips{
-                display: inline-block;
-            }
-            &.on{
-                &::before{
-                    content: "\e60d";
-                    color: orange;
-                }
-            }
-        }
+        
     }
     a.copy{
         cursor: pointer;
@@ -172,102 +45,6 @@
         &:hover{
             .icon.iconfuzhicopy22::before{
                 content: "\e90a";
-            }
-        }
-    }
-    .res-collection,.copy-row{
-        > a{
-            margin-right: 5px;
-            .icon::before{
-                font-size: 16px;
-                color: #333;
-            }
-            &:hover{
-                .icon::before{
-                    color: #666;
-                }
-            }
-        }
-        a.coll{
-            &:hover{
-                .icon.iconcollection::before{
-                    content: "\e60d";
-                }
-            }
-        }
-    }
-    .record-list{
-        li{
-            &:hover{
-                transform: translate(15px);
-            }
-            transform: translate(0);
-            transition: transform ease .3s;
-            @extend .flex;
-            border-bottom: .5px solid #eaeaea;
-            padding:10px 0;
-            justify-content: space-between;
-            &.data-end{
-                font-size: 12px;
-                color: #888;
-                justify-content: center;
-                border-bottom: none;
-                align-items: center;
-                margin-bottom: 10px;
-                .iconhuangguan{
-                    color: #e0bb77;
-                    margin-right: 5px;
-                    &::before{
-                        font-size: 18px;
-                    }
-                }
-                &:hover{
-                    transform: translate(0);
-                }
-            }
-            .body{
-                @extend .flex;
-                flex:9;
-            }
-            .num{
-                color: #555;
-            }
-            .content{
-                margin-left: 10px;
-                > div{
-                    margin-bottom: 5px;
-                }
-                .query{
-                    font-size: 16px;
-                    font-weight: bolder;
-                    color: #222;
-                }
-                .result{
-                    font-size: 14px;
-                    color: #666;
-                }
-                .time{
-                    font-size: 12px;
-                    color: #555;
-                }
-            }
-            .actions{
-                @extend .flex;
-                align-items: center;
-                justify-content: center;
-                flex:1;
-                .del-colle:hover{
-                    cursor: pointer;
-                    .iconshanchu{
-                        color: #555;
-                    }
-                }
-                .iconshanchu{
-                    color: #c31c1c;
-                    &::before{
-                        font-size: 18px;
-                    }
-                }
             }
         }
     }

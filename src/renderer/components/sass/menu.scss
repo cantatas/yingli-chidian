@@ -1,0 +1,40 @@
+
+@import "@/assets/sass/base.scss";
+ul.menu{
+
+    justify-content: center;
+    height: 100px;
+    align-items: center;
+    .name{
+        color: #000;
+        font-size: 26px;
+        margin: 20px 0;
+        font-weight: bolder;
+        letter-spacing: 3px;
+   
+    }
+    li{
+        height: 50px;
+        text-align: center;
+        font-size: 14px;
+        color: #5f606d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover{
+            color: darkred;
+            .icon{
+                transform: translate(-3px);
+            }
+        }
+        .icon{
+            margin-right: 6px;
+            transform: translate(0);
+            transition: transform ease .3s;
+        }
+        &.on{
+            color: darkred;
+            background: rgba(139, 0, 0, 0.1);
+        }
+    }
+}
