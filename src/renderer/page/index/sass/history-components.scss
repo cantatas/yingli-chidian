@@ -5,7 +5,7 @@
     .record-list{
         li{
             &:hover{
-                transform: translate(15px);
+                transform: translate(20px);
             }
             transform: translate(0);
             transition: transform ease .3s;
