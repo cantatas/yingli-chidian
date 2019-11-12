@@ -55,6 +55,13 @@
       "unicode_decimal": 58893
     },
     {
+      "icon_id": "3574791",
+      "name": "新闻",
+      "font_class": "xinwen",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
       "icon_id": "6834934",
       "name": "文件-查找内容",
       "font_class": "wj-cznr",

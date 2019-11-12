@@ -6,7 +6,7 @@
     </ul>
   </div>
   <div class="row form">
-    <textarea ref="queryInput" @focus="clearTransResutl" @keydown="keyDownAction" @keyup.enter="indexQueryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
+    <textarea ref="queryInput" @focus="clearTransResutl" @keydown="keyDownAction" @keyup.enter="queryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
   </div>
   <div v-show="queryWord" class="row result">
     <div v-show="resultVal" class="row fy-res copy-row">
@@ -64,9 +64,12 @@ export default {
   },
   methods: {
     ...indexPage,
-    indexQueryWords() {
+    queryWords() {
       if (this.queryWord) {
-        ipcRenderer.send('indexQueryWords', this.queryWord);
+        ipcRenderer.send('indexQueryWords', {
+          query: this.queryWord,
+          transTo: 'en',
+        });
         this.isCollecolled = false;
       }
     },

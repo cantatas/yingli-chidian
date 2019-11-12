@@ -9,7 +9,7 @@ export default {
   index() {
     // 搜索
     ipcMain.on('indexQueryWords', (e, msg) => {
-      ajax.getQuery(msg, (res) => {
+      ajax.getQuery(msg).then((res) => {
         e.sender.send('indexQueryResult', res);
       });
     });

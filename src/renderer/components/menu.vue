@@ -15,6 +15,7 @@ export default {
         { name: '翻译', icon: 'iconbusiness-translate' },
         { name: '收藏', icon: 'iconcollection' },
         { name: '历史', icon: 'iconhistory' },
+        { name: '头条', icon: 'iconxinwen' },
       ],
       activeIndex: 0,
     };
