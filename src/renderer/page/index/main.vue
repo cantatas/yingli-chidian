@@ -1,18 +1,25 @@
 <template>
-  <div class="page-index ">
+  <div class="page-index">
     <main class="box">
-      <div class="left-side"><!-- 左侧 -->
+      <!-- 左侧 -->
+      <div class="left-side">
+        <!-- logo -->
         <brand></brand>
+        <!-- 菜单 -->
         <menuComponents @getMenuActionIndex="getMenuActionIndex"></menuComponents>
       </div>
-      <div class="right-side"><!-- 右侧 -->
+      <!-- 右侧 -->
+      <div class="right-side">
         <div v-show="activeIndex == 0" class="tab tab-translateForm">
+          <!-- 翻译 -->
           <translateForm :activeIndex="activeIndex"></translateForm>
         </div>
         <div v-if="activeIndex == 1" class="tab tab-collection">
+          <!-- 收藏 -->
           <collection></collection>
         </div>
         <div v-if="activeIndex == 2" class="tab tab-history">
+          <!-- 历史翻译 -->
           <history></history>
         </div>
       </div>
