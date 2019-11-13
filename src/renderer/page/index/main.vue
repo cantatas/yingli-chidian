@@ -29,7 +29,6 @@
 
 <script>
 import brand from '@/components/brand';
-import { Toast } from '@/plugins';
 import menuComponents from '@/components/menu';
 import history from './components/history';
 import collection from './components/collection';
@@ -47,9 +46,6 @@ export default {
     history,
     collection,
     menuComponents,
-  },
-  mounted() {
-    Toast('112233333');
   },
   methods: {
     getMenuActionIndex(index) {
