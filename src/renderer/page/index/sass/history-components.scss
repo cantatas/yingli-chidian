@@ -9,10 +9,12 @@
             }
             transform: translate(0);
             transition: transform ease .3s;
-            @extend .flex;
-            border-bottom: .5px solid #eaeaea;
-            padding:10px 0;
-            justify-content: space-between;
+            .li-box{
+                @extend .flex;
+                border-bottom: .5px solid #eaeaea;
+                padding:10px 0;
+                justify-content: space-between;
+            }
             &.data-end{
                 font-size: 12px;
                 color: #888;

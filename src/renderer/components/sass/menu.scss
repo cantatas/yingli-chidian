@@ -16,7 +16,7 @@ ul.menu{
         height: 50px;
         text-align: center;
         font-size: 14px;
-        color: #5f606d;
+        color: rgba(0,0,0,.54);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -31,7 +31,7 @@ ul.menu{
             &::before{
                 font-size: 17px;
             }
-            margin-right: 6px;
+            margin-right: 10px;
             transform: translate(0);
             transition: transform ease .3s;
         }
