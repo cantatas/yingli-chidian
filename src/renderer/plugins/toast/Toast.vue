@@ -9,6 +9,12 @@
 <script>
 export default {
   name: 'components-toast',
+  props: {
+    position: {
+      type: String,
+      default: 'middle',
+    },
+  },
   data() {
     return {
       message: '',
