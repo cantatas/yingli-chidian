@@ -25,7 +25,7 @@
 
 <script>
 
-import { Toast } from '@/plugins';
+import { Toast, Dialog } from '@/plugins';
 import { mapGetters } from 'vuex';
 import indexPage from '../js/index-page';
 export default {
@@ -45,14 +45,16 @@ export default {
     },
     deleteHistroyItem(t) {
       // eslint-disable-next-line no-restricted-globals
-      if (confirm('确认删除？')) {
-        this.$store.dispatch('deleteHistroyItemByTime', t).then(() => {
-          Toast({
-            message: '删除成功',
-            position: 'bottom',
+      Dialog('确认删除？').then((action) => {
+        if (action === 'ok') {
+          this.$store.dispatch('deleteHistroyItemByTime', t).then(() => {
+            Toast({
+              message: '删除成功',
+              position: 'bottom',
+            });
           });
-        });
-      }
+        }
+      });
     },
   },
 };
