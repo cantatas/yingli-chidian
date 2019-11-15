@@ -26,6 +26,7 @@
 </template>
 <script>
 
+import { Toast } from '@/plugins';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ipcRenderer } from 'electron';
 import { mapGetters } from 'vuex';
@@ -93,6 +94,9 @@ export default {
         result: this.resultVal,
       }).then(() => {
         this.isCollecolled = true;
+        Toast('收藏成功');
+      }, () => {
+        Toast('该词条已收藏');
       });
     },
     saveSearchHistory() { // 保存搜索记录

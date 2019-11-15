@@ -2,7 +2,6 @@
 
 import keys from '@/common/cache/localCacheKeys';
 import { setItem, getItem } from '@/common/cache/localCache';
-import { Toast } from '@/plugins';
 
 const state = {
   transResult: {},
@@ -42,14 +41,17 @@ const actions = {
   },
   // eslint-disable-next-line no-empty-pattern
   saveMyCollection({}, params) {
-    const t = new Date().getTime();
-    const val = JSON.parse(getItem(keys.index.MY_COLLECTION)) || [];
-    if (val.findIndex(item => item.q === params.query) < 0) {
-      val.push({ t, q: params.query, r: params.result });
-      setItem(keys.index.MY_COLLECTION, val);
-    } else {
-      Toast('该词条已收藏');
-    }
+    return new Promise((resolve, reject) => {
+      const t = new Date().getTime();
+      const val = JSON.parse(getItem(keys.index.MY_COLLECTION)) || [];
+      if (val.findIndex(item => item.q === params.query) < 0) {
+        val.push({ t, q: params.query, r: params.result });
+        setItem(keys.index.MY_COLLECTION, val);
+        resolve();
+      } else {
+        reject();
+      }
+    });
   },
   // eslint-disable-next-line no-empty-pattern
   saveSearchHistory({}, params) {

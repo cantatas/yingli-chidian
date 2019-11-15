@@ -18,10 +18,12 @@
             &.data-end{
                 font-size: 12px;
                 color: #888;
+                @extend .flex;
                 justify-content: center;
                 border-bottom: none;
                 align-items: center;
                 margin-bottom: 10px;
+                padding: 10px;
                 .iconhuangguan{
                     color: #e0bb77;
                     margin-right: 5px;
