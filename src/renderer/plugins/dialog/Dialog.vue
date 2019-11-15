@@ -25,7 +25,6 @@ export default {
   methods: {
     doAction(act) {
       this.action = act;
-      console.log(act);
       this.callback(act);
       this.isShow = false;
     },

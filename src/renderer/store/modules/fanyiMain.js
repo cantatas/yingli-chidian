@@ -2,6 +2,7 @@
 
 import keys from '@/common/cache/localCacheKeys';
 import { setItem, getItem } from '@/common/cache/localCache';
+import { Toast } from '@/plugins';
 
 const state = {
   transResult: {},
@@ -47,7 +48,7 @@ const actions = {
       val.push({ t, q: params.query, r: params.result });
       setItem(keys.index.MY_COLLECTION, val);
     } else {
-      alert('该词条已收藏');
+      Toast('该词条已收藏');
     }
   },
   // eslint-disable-next-line no-empty-pattern
