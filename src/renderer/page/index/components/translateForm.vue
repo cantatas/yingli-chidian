@@ -1,10 +1,5 @@
 <template>
  <div class="tab-body translateForm-components">
-  <div class="tran-type">
-    <ul class="choose-type">
-      <li>英汉翻译</li>
-    </ul>
-  </div>
   <div class="row form">
     <textarea ref="queryInput" @focus="clearTransResutl" @keydown="keyDownAction" @keyup.enter="queryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
   </div>

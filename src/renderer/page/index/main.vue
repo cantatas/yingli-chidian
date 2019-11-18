@@ -2,7 +2,7 @@
   <div class="page-index">
     <main class="box">
       <!-- 左侧 -->
-      <div class="left-side">
+      <div style="" class="left-side  immersive-bar-height">
         <!-- logo -->
         <brand></brand>
         <!-- 菜单 -->
@@ -10,6 +10,7 @@
       </div>
       <!-- 右侧 -->
       <div class="right-side">
+        <language></language><!-- 语言选择 -->
         <div v-show="activeIndex == 0" class="tab tab-translateForm">
           <!-- 翻译 -->
           <translateForm :activeIndex="activeIndex"></translateForm>
@@ -33,6 +34,7 @@ import menuComponents from '@/components/menu';
 import history from './components/history';
 import collection from './components/collection';
 import translateForm from './components/translateForm';
+import language from './components/language';
 export default {
   name: 'index-page',
   data() {
@@ -46,6 +48,7 @@ export default {
     history,
     collection,
     menuComponents,
+    language,
   },
   methods: {
     getMenuActionIndex(index) {

@@ -6,13 +6,14 @@
     main{
         align-items: flex-start;
         overflow: hidden;
+        -webkit-app-region: drag;
     }
     height: 100%;
     .left-side{
         position: relative;
         width: 180px;
         height: 100%;
-        background: #f2f2f2;
+        background: var(--menu-bg-color);
         flex: none;
         box-shadow: inset -8px 0px 15px -11px #b3b3b3;
         ul.user{

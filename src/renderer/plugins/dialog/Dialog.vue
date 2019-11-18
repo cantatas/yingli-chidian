@@ -41,7 +41,7 @@ export default {
   transform: translate(-50%, -50%);
   max-width: 80%;
   border:1px solid #f1f1f1;
-  box-shadow: 2px 2px 10px #f3f3f3;
+  box-shadow: 0px 2px 6px 0px #f3f3f3;
   
   width:276px;
   min-height:184px;

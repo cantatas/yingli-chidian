@@ -1,3 +1,8 @@
+
+:root{
+  --menu-bg-color: #f2f2f2;
+}
+
 .box{
     display: flex;
     justify-content: space-between;
@@ -7,7 +12,9 @@
         flex-shrink: 0;
     }
 }
-
+.immersive-bar-height{
+    padding-top: 22px;
+}
 .flex{
     display: flex;
     justify-content: flex-start;

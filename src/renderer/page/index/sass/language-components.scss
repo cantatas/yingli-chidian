@@ -1,0 +1,17 @@
+
+@import "@/assets/sass/base.scss";
+.language-components{
+    padding:20px 0;
+    .choose-lang{
+        display: inline-block;
+    }
+    .list{
+        @extend .flex;
+        width: 500px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        li{
+            width: 20%;
+        }
+    }
+}
