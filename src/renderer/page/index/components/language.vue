@@ -1,8 +1,8 @@
 <template>
  <div class="language-components">
-   <div class="choose-lang">{{activeLang}}</div>
-   <ul class="list">
-     <li :key="index" v-for="(item,index) in lang">{{item.lang}}</li>
+   <div @click="toggle" class="choose-lang">{{activeLang}}</div>
+   <ul v-show="isShow" class="list">
+     <li @click="setLang(item)" :key="index" v-for="(item,index) in lang">{{resetText(item.lang)}}</li>
    </ul>
 </div>
 </template>
@@ -14,6 +14,7 @@ export default {
     return {
       lang: langList,
       activeLang: '自动检测',
+      isShow: false,
     };
   },
   mounted() {
@@ -21,6 +22,16 @@ export default {
   computed: {
   },
   methods: {
+    resetText(text) {
+      return `${text.slice(0, 1)} ⇋ 汉`;
+    },
+    toggle() {
+      this.isShow = !this.isShow;
+    },
+    setLang(item) {
+      this.activeLang = this.resetText(item.lang);
+      this.toggle();
+    },
   },
 };
 </script>

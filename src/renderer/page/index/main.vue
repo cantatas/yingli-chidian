@@ -10,19 +10,23 @@
       </div>
       <!-- 右侧 -->
       <div class="right-side">
-        <language></language><!-- 语言选择 -->
         <div v-show="activeIndex == 0" class="tab tab-translateForm">
+          <!-- 语言选择 -->
+          <language></language>
           <!-- 翻译 -->
           <translateForm :activeIndex="activeIndex"></translateForm>
         </div>
+
         <div v-if="activeIndex == 1" class="tab tab-collection">
           <!-- 收藏 -->
           <collection></collection>
         </div>
+
         <div v-if="activeIndex == 2" class="tab tab-history">
           <!-- 历史翻译 -->
           <history></history>
         </div>
+        
       </div>
     </main>
   </div>

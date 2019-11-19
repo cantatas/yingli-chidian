@@ -6,12 +6,23 @@
         display: inline-block;
     }
     .list{
+        position: absolute;
+        top: 60px;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 0 8px #ddd;
         @extend .flex;
-        width: 500px;
+        width: 330px;
         justify-content: flex-start;
         flex-wrap: wrap;
         li{
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
             width: 20%;
+            margin: 5px 0;
+            color: #3a3a3a;
+            cursor: pointer;
         }
     }
 }
