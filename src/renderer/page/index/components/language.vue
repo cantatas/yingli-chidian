@@ -1,9 +1,14 @@
 <template>
  <div class="language-components">
    <div @click="toggle" class="choose-lang">{{activeLang}}</div>
-   <ul v-show="isShow" class="list">
-     <li @click="setLang(item)" :key="index" v-for="(item,index) in lang">{{resetText(item.lang)}}</li>
-   </ul>
+   <div v-show="isShow" class="list">
+    <ul class="auto">
+      <li>自动监测</li>
+    </ul>
+    <ul class="items">
+      <li @click="setLang(item)" :key="index" v-for="(item,index) in lang">{{resetText(item.lang)}}</li>
+    </ul>
+   </div>
 </div>
 </template>
 <script>

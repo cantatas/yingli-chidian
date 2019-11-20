@@ -6,10 +6,14 @@
         <!-- logo -->
         <brand></brand>
         <!-- 菜单 -->
-        <menuComponents @getMenuActionIndex="getMenuActionIndex"></menuComponents>
+        <cMenu @getMenuActionIndex="getMenuActionIndex"></cMenu>
       </div>
       <!-- 右侧 -->
       <div class="right-side">
+        <!-- 头部 -->
+        <cHeader></cHeader>
+
+        <!-- tabs -->
         <div v-show="activeIndex == 0" class="tab tab-translateForm">
           <!-- 语言选择 -->
           <language></language>
@@ -26,7 +30,7 @@
           <!-- 历史翻译 -->
           <history></history>
         </div>
-        
+
       </div>
     </main>
   </div>
@@ -34,7 +38,8 @@
 
 <script>
 import brand from '@/components/brand';
-import menuComponents from '@/components/menu';
+import cMenu from '@/components/menu';
+import cHeader from '@/components/header';
 import history from './components/history';
 import collection from './components/collection';
 import translateForm from './components/translateForm';
@@ -48,10 +53,11 @@ export default {
   },
   components: {
     brand,
+    cHeader,
     translateForm,
     history,
     collection,
-    menuComponents,
+    cMenu,
     language,
   },
   methods: {
@@ -63,5 +69,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "sass/index.scss";
+@import "sass/main.scss";
 </style>

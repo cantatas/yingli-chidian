@@ -5,4 +5,6 @@ export default {
   center: true,
   resizable: false, // 窗口是否可以改变尺寸
   titleBarStyle: 'hidden',
+  transparent: true,
+  frame: false,
 };

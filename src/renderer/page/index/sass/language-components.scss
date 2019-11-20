@@ -1,7 +1,7 @@
 
 @import "@/assets/sass/base.scss";
 .language-components{
-    padding:20px 0;
+    padding:10px 0;
     .choose-lang{
         display: inline-block;
     }
@@ -11,10 +11,19 @@
         padding: 10px;
         background: #fff;
         box-shadow: 0 0 8px #ddd;
-        @extend .flex;
         width: 330px;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        .items{
+            @extend .flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .auto{
+            li{
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+        }
         li{
             height: 20px;
             line-height: 20px;

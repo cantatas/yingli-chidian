@@ -13,31 +13,43 @@ ul.menu{
         letter-spacing: 3px;
     }
     li{
-        height: 50px;
-        text-align: center;
-        font-size: 14px;
-        color: rgba(0,0,0,.54);
+        height: 35px;
+        text-align: left;
+        font-size: 13px;
+        color: #222;
         display: flex;
-        justify-content: center;
+        margin: 0 8px;
+        border-radius: 3px;
+        padding-left: 20px;
+        margin-bottom: 5px;
         align-items: center;
-        transition: background ease .6s;
         &:hover{
             color: darkred;
             .icon{
-                transform: translate(-3px);
+                color: darkred;
             }
         }
         .icon{
+            color: #666;
             &::before{
                 font-size: 17px;
             }
             margin-right: 10px;
-            transform: translate(0);
-            transition: transform ease .3s;
         }
         &.on{
+            position: relative;
             color: darkred;
-            background: rgba(139, 0, 0, 0.1);
+            background: #dadada;
+            .icon{
+                color: darkred;
+            }
+            // &::before{
+            //     content: '';
+            //     position: absolute;
+            //     height: 100%;
+            //     left:0;
+            //     border-left: 2px solid;
+            // }
         }
     }
 }

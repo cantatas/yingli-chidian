@@ -6,9 +6,7 @@
     margin: 0;
     padding: 0;
     -webkit-user-select: none;
-}
-body{
-    background: #fff;
+    cursor: default;
 }
 body,button,input,select,textarea {
     font: 400 14px/1.5 Arial,"Lucida Grande",Verdana,"Microsoft YaHei",hei;
