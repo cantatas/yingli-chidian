@@ -7,6 +7,7 @@ const USEAGES = {
   key: 'uS8h2NZItQYaSvpLLHpw',
   translateAPI: 'https://api.fanyi.baidu.com/api/trans/vip/translate',
   languageAPI: 'https://fanyi-api.baidu.com/api/trans/vip/language',
+  tianqiapiAPI: 'https://www.tianqiapi.com/api/version=v1&city=济南',
   salt: new Date().getTime(),
 };
 

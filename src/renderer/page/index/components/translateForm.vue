@@ -5,7 +5,8 @@
   </div>
   <div v-show="queryWord" class="row result">
     <div v-show="resultVal" class="row fy-res copy-row">
-      <div class="input">{{queryWord}}</div><a title="复制" @click="copyResult(queryWord)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
+      <div class="input">{{queryWord}} <span>「 {{pyRes}} 」</span></div><a title="复制" @click="copyResult(queryWord)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
+      
     </div>
     <div class="row fy-res">
       <div class="res-text">{{ resultVal }}</div>
@@ -25,7 +26,9 @@ import { Toast } from '@/plugins';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ipcRenderer } from 'electron';
 import { mapGetters } from 'vuex';
+import pinyin from 'pinyin';
 import indexPage from '../js/index-page';
+
 export default {
   name: 'translateForm-components',
   props: {
@@ -37,6 +40,10 @@ export default {
     return {
       queryWord: '',
       isCollecolled: false,
+      pyRes: '',
+      reg: {
+        zh: /[^\u4e00-\u9fa5]/,
+      },
     };
   },
   mounted() {
@@ -66,6 +73,10 @@ export default {
           query: this.queryWord,
           transTo: 'en',
         });
+        if (!this.reg.zh.test(this.queryWord)) {
+          this.pyRes = pinyin(this.queryWord).join('，');
+        }
+
         this.isCollecolled = false;
       }
     },
@@ -75,7 +86,7 @@ export default {
     },
     clearTransResutl() {
       if (!this.queryWord) {
-        this.$store.dispatch('clearTransResutl');
+        // this.$store.dispatch('clearTransResutl');
       }
     },
     onIPCMsg() {
