@@ -10,7 +10,6 @@ const USEAGES = {
   salt: new Date().getTime(),
 };
 
-
 // const isEN = val => /[_a-zA-Z]/.test(val);
 
 const httpRequest = api => new Promise((resolve, reject) => {
