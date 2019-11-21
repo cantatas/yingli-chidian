@@ -2,6 +2,9 @@
 
 import keys from '@/common/cache/localCacheKeys';
 import { setItem, getItem } from '@/common/cache/localCache';
+import pinyin from 'pinyin';
+
+const regZH = /[^\u4e00-\u9fa5]/;
 
 const state = {
   transResult: {},
@@ -26,7 +29,13 @@ const mutations = {
 const actions = {
 
   queryWord({ commit, dispatch }, params) {
-    const val = JSON.parse(params);
+    const val = JSON.parse(params.msg);
+    // 新增拼音
+    let py = '';
+    if (!regZH.test(params.query)) {
+      py = pinyin(params.query).join('，');
+    }
+    val.py = py;
     commit('SET_TRANS_RESULT', val);
     // 保存历史搜索
     if (val.trans_result) {

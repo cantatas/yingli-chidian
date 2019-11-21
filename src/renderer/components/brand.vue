@@ -1,6 +1,6 @@
 <template>
 <div class="brand-components flex">
-  <span class="hou">后</span><span class="dao">道</span><span class="ci">词</span><span class="dian">典</span>
+  <!-- <span class="hou">后</span><span class="dao">道</span><span class="ci">词</span><span class="dian">典</span> -->
 </div>
 </template>
 

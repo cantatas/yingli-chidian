@@ -2,7 +2,7 @@
   <div class="page-index">
     <main class="box">
       <!-- 左侧 -->
-      <div style="" class="left-side  immersive-bar-height">
+      <div class="left-side  immersive-bar-height">
         <!-- logo -->
         <brand></brand>
         <!-- 菜单 -->

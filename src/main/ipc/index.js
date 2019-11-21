@@ -1,6 +1,6 @@
 
 import ajax from '../ajax';
-import { ipcMain,net } from 'electron' // eslint-disable-line
+import { ipcMain } from 'electron' // eslint-disable-line
 
 export default {
   init() {

@@ -1,21 +1,21 @@
 <template>
  <div class="tab-body translateForm-components">
   <div class="row form">
-    <textarea ref="queryInput" @focus="clearTransResutl" @keydown="keyDownAction" @keyup.enter="queryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
+    <textarea ref="queryInput"  @keydown="keyDownAction" @keyup.enter="queryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
   </div>
   <div v-show="queryWord" class="row result">
     <div v-show="resultVal" class="row fy-res copy-row">
-      <div class="input">{{queryWord}} <span>「 {{pyRes}} 」</span></div><a title="复制" @click="copyResult(queryWord)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
-      
+      <div class="input">{{queryWord}}</div><a title="复制" @click="copyResult(queryWord)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
     </div>
+    <div v-show="pinyinVal" class="row pinyin">[{{pinyinVal}}]</div>
     <div class="row fy-res">
       <div class="res-text">{{ resultVal }}</div>
-    </div>
-    <div class="row fy-res">
       <div class="res-collection" v-show="resultVal">
         <a title="复制" @click="copyResult()" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
         <a title="加入我的收藏" class="coll" @click="saveCollection"><i  :class="{'on' : isCollecolled}" class="icon iconfont iconcollection"></i></a>
       </div>
+    </div>
+    <div class="row fy-res">
     </div>
   </div>
 </div>
@@ -26,7 +26,6 @@ import { Toast } from '@/plugins';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ipcRenderer } from 'electron';
 import { mapGetters } from 'vuex';
-import pinyin from 'pinyin';
 import indexPage from '../js/index-page';
 
 export default {
@@ -40,10 +39,6 @@ export default {
     return {
       queryWord: '',
       isCollecolled: false,
-      pyRes: '',
-      reg: {
-        zh: /[^\u4e00-\u9fa5]/,
-      },
     };
   },
   mounted() {
@@ -64,6 +59,9 @@ export default {
     resultVal() {
       return (this.getTransResultState.trans_result && this.getTransResultState.trans_result[0].dst) || '';
     },
+    pinyinVal() {
+      return this.getTransResultState.py || '';
+    },
   },
   methods: {
     ...indexPage,
@@ -73,10 +71,6 @@ export default {
           query: this.queryWord,
           transTo: 'en',
         });
-        if (!this.reg.zh.test(this.queryWord)) {
-          this.pyRes = pinyin(this.queryWord).join('，');
-        }
-
         this.isCollecolled = false;
       }
     },
@@ -86,12 +80,12 @@ export default {
     },
     clearTransResutl() {
       if (!this.queryWord) {
-        // this.$store.dispatch('clearTransResutl');
+        this.$store.dispatch('clearTransResutl');
       }
     },
     onIPCMsg() {
       ipcRenderer.on('indexQueryResult', (e, msg) => {
-        this.$store.dispatch('queryWord', msg);
+        this.$store.dispatch('queryWord', { msg, query: this.queryWord });
       });
     },
     saveCollection() { // 收藏翻译
