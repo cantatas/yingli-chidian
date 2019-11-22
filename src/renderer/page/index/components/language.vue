@@ -3,7 +3,7 @@
    <div @click="toggle" class="choose-lang">{{activeLang}}</div>
    <div v-show="isShow" class="list">
     <ul class="auto">
-      <li>自动监测</li>
+      <li>自动检测</li>
     </ul>
     <ul class="items">
       <li @click="setLang(item)" :key="index" v-for="(item,index) in lang">{{resetText(item.lang)}}</li>
