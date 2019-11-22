@@ -33,7 +33,7 @@ const actions = {
     // 新增拼音
     let py = '';
     if (!regZH.test(params.query)) {
-      py = pinyin(params.query).join('，');
+      py = pinyin(params.query).join(' ');
     }
     val.py = py;
     commit('SET_TRANS_RESULT', val);
@@ -42,6 +42,7 @@ const actions = {
       dispatch('saveSearchHistory', {
         query: val.trans_result[0].src,
         result: val.trans_result[0].dst,
+        py,
       });
     }
   },
@@ -54,7 +55,12 @@ const actions = {
       const t = new Date().getTime();
       const val = JSON.parse(getItem(keys.index.MY_COLLECTION)) || [];
       if (val.findIndex(item => item.q === params.query) < 0) {
-        val.push({ t, q: params.query, r: params.result });
+        val.push({
+          t,
+          q: params.query,
+          r: params.result,
+          p: params.py,
+        });
         setItem(keys.index.MY_COLLECTION, val);
         resolve();
       } else {
@@ -65,14 +71,19 @@ const actions = {
   // eslint-disable-next-line no-empty-pattern
   saveSearchHistory({}, params) {
     const val = JSON.parse(getItem(keys.index.SEARCH_HISTORYS)) || [];
-    val.push({ t: new Date().getTime(), q: params.query, r: params.result });
+    val.push({
+      t: new Date().getTime(),
+      q: params.query,
+      r: params.result,
+      p: params.py,
+    });
     setItem(keys.index.SEARCH_HISTORYS, val);
   },
   getMyCollection({ commit }) {
-    commit('SET_MY_COLLECTION', JSON.parse(getItem(keys.index.MY_COLLECTION)));
+    commit('SET_MY_COLLECTION', JSON.parse(getItem(keys.index.MY_COLLECTION)) || []);
   },
   getSearchHistory({ commit }) {
-    commit('SET_SEARCH_HISTORYS', JSON.parse(getItem(keys.index.SEARCH_HISTORYS)));
+    commit('SET_SEARCH_HISTORYS', JSON.parse(getItem(keys.index.SEARCH_HISTORYS)) || []);
   },
   deleteColleItemByTime({ dispatch }, time) { // 根据时间戳删除 收藏项
     const list = JSON.parse(getItem(keys.index.MY_COLLECTION));

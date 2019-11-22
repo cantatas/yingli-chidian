@@ -1,8 +1,10 @@
 
 :root{
-  --menu-bg-color: rgba(242, 242, 242, 0.975);
+  --menu-bg-color: rgba(242, 242, 242, 0.981);
 }
-
+.cursor-text{
+    cursor: text;
+}
 .box{
     display: flex;
     justify-content: space-between;

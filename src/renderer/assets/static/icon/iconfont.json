@@ -41,6 +41,13 @@
       "unicode_decimal": 59227
     },
     {
+      "icon_id": "2983110",
+      "name": "通知",
+      "font_class": "tongzhi",
+      "unicode": "e73b",
+      "unicode_decimal": 59195
+    },
+    {
       "icon_id": "3050491",
       "name": "收藏",
       "font_class": "collection",

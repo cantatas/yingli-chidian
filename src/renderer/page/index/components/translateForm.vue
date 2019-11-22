@@ -7,10 +7,11 @@
     <div v-show="resultVal" class="row fy-res copy-row">
       <div class="input">{{queryWord}}</div><a title="复制" @click="copyResult(queryWord)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
     </div>
-    <div v-show="pinyinVal" class="row pinyin">[{{pinyinVal}}]</div>
+    <div v-show="pinyinVal" class="row pinyin">{{pinyinVal}}</div>
     <div class="row fy-res">
       <div class="res-text">{{ resultVal }}</div>
       <div class="res-collection" v-show="resultVal">
+        <a title="复制" class="copy"><i class="icon iconfont icontongzhi"></i></a>
         <a title="复制" @click="copyResult()" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a>
         <a title="加入我的收藏" class="coll" @click="saveCollection"><i  :class="{'on' : isCollecolled}" class="icon iconfont iconcollection"></i></a>
       </div>
@@ -92,6 +93,7 @@ export default {
       this.$store.dispatch('saveMyCollection', {
         query: this.queryWord,
         result: this.resultVal,
+        py: this.pinyinVal,
       }).then(() => {
         this.isCollecolled = true;
         Toast('收藏成功');

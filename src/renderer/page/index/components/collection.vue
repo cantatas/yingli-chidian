@@ -7,6 +7,7 @@
             <div class="num">{{index+1}}.</div>
             <div class="content">
               <div class="query">{{key.q}}<a title="复制" @click="copyResult(key.q)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a></div>
+              <div v-show="key.p" class="py">{{key.p || ''}}</div>
               <div class="result">{{key.r}}<a title="复制" @click="copyResult(key.r)" class="copy"><i class="icon iconfont iconfuzhicopy22"></i></a></div>
               <div class="time">{{getDayName(key.t)}} {{dateFormat(key.t)}}</div>
             </div>
