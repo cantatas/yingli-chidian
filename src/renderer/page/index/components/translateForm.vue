@@ -44,7 +44,7 @@ export default {
     return {
       queryWord: '',
       isCollecolled: false,
-      fromToLang: '',
+      fromToLang: 'auto',
       transToLang: 'zh',
     };
   },
@@ -80,11 +80,6 @@ export default {
     },
     queryWords() { // 查询
       if (this.queryWord) {
-        this.$root.log({
-          query: this.queryWord,
-          transTo: this.transToLang,
-          from: this.fromToLang,
-        });
         ipcRenderer.send('indexQueryWords', {
           query: this.queryWord,
           from: this.fromToLang,
@@ -104,10 +99,11 @@ export default {
     },
     onIPCMsg() {
       ipcRenderer.on('indexQueryResult', (e, msg) => {
-        if (msg.error_code === 0) {
-          this.$store.dispatch('queryWord', { msg, query: this.queryWord });
-        } else {
+        this.$root.log(msg);
+        if (msg.error_code && msg.error_code !== 0) {
           Toast(errorCode[msg.error_code]);
+        } else {
+          this.$store.dispatch('queryWord', { msg, query: this.queryWord });
         }
       });
     },

@@ -2,7 +2,7 @@
  <div class="language-components">
    <div @click="toggle" class="choose-lang">{{activeLang}}</div>
    <div v-show="isShow" class="list">
-    <ul class="auto">
+    <ul :class="{ 'on' : activeKey == 'auto'}" class="auto">
       <li @click="setLang(null)" >自动检测</li>
     </ul>
     <ul class="items">
@@ -23,10 +23,6 @@ export default {
       activeKey: '',
       isShow: false,
     };
-  },
-  mounted() {
-  },
-  computed: {
   },
   methods: {
     toggle() {
