@@ -11,6 +11,8 @@ export default {
     ipcMain.on('indexQueryWords', (e, msg) => {
       ajax.getQuery(msg).then((res) => {
         e.sender.send('indexQueryResult', res);
+      }, (res) => {
+        e.sender.send('indexQueryResult', res);
       });
     });
   },

@@ -1,5 +1,7 @@
 <template>
  <div class="tab-body translateForm-components">
+  <!-- 语言选择 -->
+  <language @getFromToLang="getFromToLang"></language>
   <div class="row form">
     <textarea ref="queryInput"  @keydown="keyDownAction" @keyup.enter="queryWords()" v-model="queryWord" placeholder="在此输入要翻译的单词" rows="3"></textarea>
   </div>
@@ -24,10 +26,12 @@
 <script>
 
 import { Toast } from '@/plugins';
+import errorCode from '@/common/errorCode';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ipcRenderer } from 'electron';
 import { mapGetters } from 'vuex';
 import indexPage from '../js/index-page';
+import language from './language';
 
 export default {
   name: 'translateForm-components',
@@ -40,6 +44,8 @@ export default {
     return {
       queryWord: '',
       isCollecolled: false,
+      fromToLang: '',
+      transToLang: 'zh',
     };
   },
   mounted() {
@@ -52,6 +58,9 @@ export default {
         this.$refs.queryInput.focus();
       }
     },
+  },
+  components: {
+    language,
   },
   computed: {
     ...mapGetters([
@@ -66,11 +75,20 @@ export default {
   },
   methods: {
     ...indexPage,
-    queryWords() {
+    getFromToLang(item) {
+      this.fromToLang = item.key;
+    },
+    queryWords() { // 查询
       if (this.queryWord) {
+        this.$root.log({
+          query: this.queryWord,
+          transTo: this.transToLang,
+          from: this.fromToLang,
+        });
         ipcRenderer.send('indexQueryWords', {
           query: this.queryWord,
-          transTo: 'en',
+          from: this.fromToLang,
+          transTo: this.transToLang,
         });
         this.isCollecolled = false;
       }
@@ -86,7 +104,11 @@ export default {
     },
     onIPCMsg() {
       ipcRenderer.on('indexQueryResult', (e, msg) => {
-        this.$store.dispatch('queryWord', { msg, query: this.queryWord });
+        if (msg.error_code === 0) {
+          this.$store.dispatch('queryWord', { msg, query: this.queryWord });
+        } else {
+          Toast(errorCode[msg.error_code]);
+        }
       });
     },
     saveCollection() { // 收藏翻译

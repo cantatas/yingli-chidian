@@ -18,8 +18,8 @@ const httpRequest = api => new Promise((resolve, reject) => {
     response.on('data', (chunk) => {
       resolve(`${chunk}`);
     });
-    response.on('error', () => {
-      reject();
+    response.on('error', (error) => {
+      reject(error);
     });
   });
   request.end();
@@ -29,13 +29,21 @@ export default {
   getQuery(param) {
     const MD5STR = MD5(`${USEAGES.appid}${param.query}${USEAGES.salt}${USEAGES.key}`);
     const languageAPI = `${USEAGES.languageAPI}?q=${param.query}&appid=${USEAGES.appid}&salt=${USEAGES.salt}&sign=${MD5STR}`;
+    let translateAPI = `${USEAGES.translateAPI}?q=${param.query}&appid=${USEAGES.appid}&salt=${USEAGES.salt}&from={from}&to=${param.transTo}&sign=${MD5STR}`;
+    if (param.from) {
+      translateAPI = translateAPI.replace('{from}', param.from);
+      return httpRequest(translateAPI);
+    }
     return httpRequest(languageAPI).then((lngRes) => { // 识别语言
       lngRes = typeof lngRes === 'string' ? JSON.parse(lngRes) : lngRes;
-      if (lngRes.data.src !== 'zh') {
-        param.transTo = 'zh';
+      if (lngRes.error_code === '0') {
+        if (lngRes.data.src !== 'zh') {
+          param.transTo = 'zh';
+        }
+        translateAPI = translateAPI.replace('{from}', lngRes.data.src);
+        return httpRequest(translateAPI); // 翻译
       }
-      const translateAPI = `${USEAGES.translateAPI}?q=${param.query}&appid=${USEAGES.appid}&salt=${USEAGES.salt}&from=${lngRes.data.src}&to=${param.transTo}&sign=${MD5STR}`;
-      return httpRequest(translateAPI); // 翻译
+      return Promise.reject(lngRes);
     });
   },
 };

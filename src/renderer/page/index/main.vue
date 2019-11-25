@@ -15,8 +15,6 @@
 
         <!-- tabs -->
         <div v-show="activeIndex == 0" class="tab tab-translateForm">
-          <!-- 语言选择 -->
-          <language></language>
           <!-- 翻译 -->
           <translateForm :activeIndex="activeIndex"></translateForm>
         </div>
@@ -43,7 +41,6 @@ import cHeader from '@/components/header';
 import history from './components/history';
 import collection from './components/collection';
 import translateForm from './components/translateForm';
-import language from './components/language';
 export default {
   name: 'index-page',
   data() {
@@ -58,7 +55,6 @@ export default {
     history,
     collection,
     cMenu,
-    language,
   },
   methods: {
     getMenuActionIndex(index) {

@@ -11,16 +11,18 @@
         padding: 10px;
         background: #fff;
         box-shadow: 0 0 8px #ddd;
-        width: 330px;
+        width: 389px;
         .items{
             @extend .flex;
             justify-content: flex-start;
             flex-wrap: wrap;
+            li.on{
+                color: var(--default-font-color );
+            }
         }
         .auto{
             li{
                 width: 100%;
-                text-align: left;
                 border-bottom: 1px solid #ddd;
                 height: 30px;
             }
@@ -28,7 +30,7 @@
         li{
             height: 20px;
             line-height: 20px;
-            text-align: center;
+            text-align: left;
             width: 20%;
             margin: 5px 0;
             color: #3a3a3a;

@@ -29,7 +29,7 @@ const mutations = {
 const actions = {
 
   queryWord({ commit, dispatch }, params) {
-    const val = JSON.parse(params.msg);
+    const val = typeof params.msg === 'string' ? JSON.parse(params.msg) : params.msg;
     // 新增拼音
     let py = '';
     if (!regZH.test(params.query)) {

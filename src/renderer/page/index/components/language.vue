@@ -3,22 +3,24 @@
    <div @click="toggle" class="choose-lang">{{activeLang}}</div>
    <div v-show="isShow" class="list">
     <ul class="auto">
-      <li>自动检测</li>
+      <li @click="setLang(null)" >自动检测</li>
     </ul>
     <ul class="items">
-      <li @click="setLang(item)" :key="index" v-for="(item,index) in lang">{{resetText(item.lang)}}</li>
+      <li :class="{'on': item.key == activeKey}" @click="setLang(item)" :key="index" v-for="(item,index) in lang">{{item.lang}}</li>
     </ul>
    </div>
 </div>
 </template>
 <script>
 import langList from '../js/language-list';
+const AUTO_NAME = '自动检测';
 export default {
   name: 'language-components',
   data() {
     return {
       lang: langList,
-      activeLang: '自动检测',
+      activeLang: AUTO_NAME,
+      activeKey: '',
       isShow: false,
     };
   },
@@ -27,15 +29,22 @@ export default {
   computed: {
   },
   methods: {
-    resetText(text) {
-      return `${text.slice(0, 1)} ⇋ 汉`;
-    },
     toggle() {
       this.isShow = !this.isShow;
     },
-    setLang(item) {
-      this.activeLang = this.resetText(item.lang);
+    setLang(val) {
+      let item = val;
+      if (!item) {
+        item = {};
+        item.key = 'auto';
+        item.lang = AUTO_NAME;
+        this.activeLang = item.lang;
+      } else {
+        this.activeLang = `${item.lang} ⇋ 中文`;
+      }
+      this.activeKey = item.key;
       this.toggle();
+      this.$emit('getFromToLang', item);
     },
   },
 };
