@@ -2,7 +2,7 @@
 @import "@/assets/sass/base.scss";
 .header-components{
     @extend .flex;
-    height: 40px;
+    height: 35px;
     -webkit-app-region: drag;
     border-bottom: 1px solid #dedede;
 }

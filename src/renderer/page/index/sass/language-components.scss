@@ -10,7 +10,7 @@
         top: 90px;
         padding: 10px;
         background: #fff;
-        box-shadow: 0 0 8px #ddd;
+        box-shadow: 0 0 20px #ccc;
         width: 389px;
         .items{
             @extend .flex;
@@ -33,7 +33,7 @@
             text-align: left;
             width: 20%;
             margin: 5px 0;
-            color: #3a3a3a;
+            color: #555;
             cursor: pointer;
         }
     }

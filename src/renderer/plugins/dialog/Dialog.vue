@@ -41,13 +41,11 @@ export default {
   transform: translate(-50%, -50%);
   max-width: 80%;
   border:1px solid #f1f1f1;
-  box-shadow: 0px 2px 6px 0px #f3f3f3;
-  
+  box-shadow: 0 0 35px #d8d8d8;
   width:276px;
   min-height:184px;
   background:rgba(255,255,255,1);
   border-radius:6px;
-
   box-sizing: border-box;
   text-align: center;
   z-index: 1000;
