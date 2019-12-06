@@ -17,11 +17,11 @@ const mutations = {
     state.transResult = param;
   },
   SET_MY_COLLECTION(state, param) {
-    if (param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
+    if (param && param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
     state.myCollection = param;
   },
   SET_SEARCH_HISTORYS(state, param) {
-    if (param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
+    if (param && param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
     state.serarchHistorys = param;
   },
 };
@@ -52,50 +52,64 @@ const actions = {
   // eslint-disable-next-line no-empty-pattern
   saveMyCollection({}, params) {
     return new Promise((resolve, reject) => {
-      const t = new Date().getTime();
-      const val = JSON.parse(getItem(keys.index.MY_COLLECTION)) || [];
-      if (val.findIndex(item => item.q === params.query) < 0) {
-        val.push({
-          t,
-          q: params.query,
-          r: params.result,
-          p: params.py,
-        });
-        setItem(keys.index.MY_COLLECTION, val);
-        resolve();
-      } else {
-        reject();
-      }
+      getItem(keys.index.MY_COLLECTION).then((res) => {
+        const val = res || [];
+        const t = new Date().getTime();
+        if (val.findIndex(item => item.q === params.query) < 0) {
+          val.push({
+            t,
+            q: params.query,
+            r: params.result,
+            p: params.py,
+          });
+          setItem(keys.index.MY_COLLECTION, val);
+          resolve();
+        } else {
+          reject();
+        }
+      });
     });
   },
   // eslint-disable-next-line no-empty-pattern
   saveSearchHistory({}, params) {
-    const val = JSON.parse(getItem(keys.index.SEARCH_HISTORYS)) || [];
-    val.push({
-      t: new Date().getTime(),
-      q: params.query,
-      r: params.result,
-      p: params.py,
+    getItem(keys.index.SEARCH_HISTORYS).then((res) => {
+      const val = res || [];
+      val.push({
+        t: new Date().getTime(),
+        q: params.query,
+        r: params.result,
+        p: params.py,
+      });
+      setItem(keys.index.SEARCH_HISTORYS, val);
     });
-    setItem(keys.index.SEARCH_HISTORYS, val);
   },
   getMyCollection({ commit }) {
-    commit('SET_MY_COLLECTION', JSON.parse(getItem(keys.index.MY_COLLECTION)) || []);
+    return getItem(keys.index.MY_COLLECTION).then((res) => {
+      commit('SET_MY_COLLECTION', res);
+    });
   },
   getSearchHistory({ commit }) {
-    commit('SET_SEARCH_HISTORYS', JSON.parse(getItem(keys.index.SEARCH_HISTORYS)) || []);
+    return getItem(keys.index.SEARCH_HISTORYS).then((res) => {
+      commit('SET_SEARCH_HISTORYS', res);
+    });
   },
   deleteColleItemByTime({ dispatch }, time) { // 根据时间戳删除 收藏项
-    const list = JSON.parse(getItem(keys.index.MY_COLLECTION));
-    list.splice(list.findIndex(item => item.t === time), 1);
-    setItem(keys.index.MY_COLLECTION, list);
-    dispatch('getMyCollection');
+    return getItem(keys.index.MY_COLLECTION).then((res) => {
+      const list = res || [];
+      list.splice(list.findIndex(item => item.t === time), 1);
+      return setItem(keys.index.MY_COLLECTION, list).then(() => {
+        dispatch('getMyCollection');
+      });
+    });
   },
   deleteHistroyItemByTime({ dispatch }, time) { // 根据时间戳删除 历史项
-    const list = JSON.parse(getItem(keys.index.SEARCH_HISTORYS));
-    list.splice(list.findIndex(item => item.t === time), 1);
-    setItem(keys.index.SEARCH_HISTORYS, list);
-    dispatch('getSearchHistory');
+    return getItem(keys.index.SEARCH_HISTORYS).then((res) => {
+      const list = res || [];
+      list.splice(list.findIndex(item => item.t === time), 1);
+      return setItem(keys.index.SEARCH_HISTORYS, list).then(() => {
+        dispatch('getSearchHistory');
+      });
+    });
   },
 };
 

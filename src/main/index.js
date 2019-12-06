@@ -1,8 +1,9 @@
-import { app, BrowserWindow,globalShortcut } from 'electron' // eslint-disable-line
+import { app,Menu, BrowserWindow,globalShortcut } from 'electron' // eslint-disable-line
 import shortcutAction from './actions/actionShortcut.js';
 
 import ipcAction from './ipc/index';
 import windowConfig from './config/windowConfig';
+import menuConfig from './config/menuConfig';
 
 /**
  * Set `__static` path to static files in production
@@ -30,7 +31,11 @@ function createWindow() {
 
   ipcAction.init();// 渲染进程通信初始化
   shortcutAction.register(globalShortcut, mainWindow);
+
+  const menu = Menu.buildFromTemplate(menuConfig);
+  Menu.setApplicationMenu(menu);
 }
+
 
 app.on('ready', createWindow);
 

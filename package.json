@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "localforage": "^1.7.3",
     "node": "^8.13.0",
     "pinyin": "^2.9.0",
     "vue": "^2.5.16",

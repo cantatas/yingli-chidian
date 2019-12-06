@@ -24,7 +24,6 @@
     .right-side{
         width: 100%;
         height: 100%;
-        overflow: auto;
         background: #fff;
     }
     a.copy{
@@ -41,6 +40,11 @@
         // }
     }
     .tab{
+        position: relative;
+        height: 100%;
         padding: 10px;
+        padding-bottom: var(--head-height);
+        overflow: auto;
+        overflow-x: hidden;
     }
 }
