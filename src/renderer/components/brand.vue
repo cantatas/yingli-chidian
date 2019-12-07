@@ -1,6 +1,6 @@
 <template>
 <div class="brand-components flex">
-  <!-- <span class="hou">英</span><span class="dao">丽</span><span class="ci">词</span><span class="dian">典</span> -->
+  <span class="hou">英</span><span class="dao">丽</span><span class="ci">词</span><span class="dian">典</span>
 </div>
 </template>
 
@@ -34,14 +34,17 @@ export default {
   .dao{
       transform: rotate(-20deg);
       color: #d8c00c;
+      color: #3a3de2;
       background: rgba(216, 192, 12, 0.1);
   }
   .ci{
       color: #b89ae8;
+      color: #3a3de2;
       background: rgba(184, 154, 232, 0.1);
   }
   .dian{
       color: #18b4e6;
+      color: #3a3de2;
       background: rgba(62, 206, 252, 0.1);
   }
   .dian,
