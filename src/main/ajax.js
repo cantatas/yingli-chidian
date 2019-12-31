@@ -7,6 +7,7 @@ const USEAGES = {
   key: 'uS8h2NZItQYaSvpLLHpw',
   translateAPI: 'https://api.fanyi.baidu.com/api/trans/vip/translate',
   languageAPI: 'https://fanyi-api.baidu.com/api/trans/vip/language',
+  everydayEnglish: 'http://open.iciba.com/dsapi/?date=',
   salt: new Date().getTime(),
 };
 
@@ -55,5 +56,8 @@ export default {
       }
       return Promise.reject(lngRes);
     });
+  },
+  getEverydayEnglish(date) { // 每日一句
+    return httpRequest(`${USEAGES.everydayEnglish}${date}`);
   },
 };

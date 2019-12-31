@@ -10,6 +10,7 @@ const state = {
   transResult: {},
   serarchHistorys: [],
   myCollection: [],
+  everydayEnglish: '',
 };
 
 const mutations = {
@@ -23,6 +24,9 @@ const mutations = {
   SET_SEARCH_HISTORYS(state, param) {
     if (param && param.length)param = param.sort((a, b) => (b.t > a.t ? 1 : -1));
     state.serarchHistorys = param;
+  },
+  SET_EVERYDAY_ENGLISH(state, param) {
+    state.everydayEnglish = param;
   },
 };
 
@@ -111,12 +115,22 @@ const actions = {
       });
     });
   },
+  // eslint-disable-next-line no-empty-pattern
+  setEverydayEnglish({}, res) {
+    setItem(keys.index.SET_EVERYDAY_ENGLISH, res);
+  },
+  getEverydayEnglish({ commit }) {
+    return getItem(keys.index.SET_EVERYDAY_ENGLISH).then((res) => {
+      commit('SET_EVERYDAY_ENGLISH', res);
+    });
+  },
 };
 
 const getters = {
   getTransResultState: state => state.transResult,
   getSearchHistoryState: state => state.serarchHistorys,
   getMyCollectionState: state => state.myCollection,
+  getEverydayEnglishState: state => state.everydayEnglish,
 };
 
 export default {

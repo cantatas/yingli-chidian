@@ -15,5 +15,13 @@ export default {
         e.sender.send('indexQueryResult', res);
       });
     });
+    // 每日一句
+    ipcMain.on('getEverydayEnglish', (e, msg) => {
+      ajax.getEverydayEnglish(msg).then((res) => {
+        e.sender.send('setEverydayEnglish', res);
+      }, (res) => {
+        e.sender.send('setEverydayEnglish', res);
+      });
+    });
   },
 };
